@@ -1,0 +1,24 @@
+name: Docker Image CI Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build Start
+      run: echo "Start createing docker an image with docker file"
+    - name: Build the Docker image
+      run: docker build -t 2jisu/docker-react-app -f Dockerfile.dev .
+    - name: Run Test
+      run: docker run 2jisu/docker-react-app npm run test -- --coverage
+    - name: Afeter Test
+      run: echo "Test success"
