@@ -20,5 +20,5 @@ jobs:
       run: docker build -t 2jisu/docker-react-app -f Dockerfile.dev .
     - name: Run Test
       run: docker run 2jisu/docker-react-app npm run test -- --coverage
-    - name: Afeter Test
+    - name: After Test
       run: echo "Test success"
