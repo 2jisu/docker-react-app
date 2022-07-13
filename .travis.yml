@@ -1,0 +1,16 @@
+sudo: required
+
+language: generid
+
+services:
+  - docker
+
+before_install:
+  - echo "Start createing docker an image with docker file"
+  - docker build -t 2jisu/docker-react-app -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true 2jisu/docker-react-app npm run test -- --coverage
+
+after_success:
+  - echo "Test success"
